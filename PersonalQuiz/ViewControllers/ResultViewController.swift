@@ -23,7 +23,19 @@ final class ResultViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    deinit {
-        print("\(type(of: self)) has been deallocated")
+    private func defineMostChosenAnimal(in answers: [Answer]) -> Animal {
+        let animals = answers.map { $0.animal }.reduce(into: [:]) {
+            $0[$1, default: 0] += 1
+        }
+        
+        var mostChosenAnimal = animals.keys.first ?? .dog
+        for (animal, quantity) in animals {
+            if quantity >= (answers.count) / 2 {
+                mostChosenAnimal = animal
+                break
+            }
+        }
+        
+        return mostChosenAnimal
     }
 }
