@@ -16,7 +16,11 @@ final class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.hidesBackButton = true
+        
+        let animal = defineMostChosenAnimal(in: answersChosen)
+        animalLabel.text = "Вы - \(animal.rawValue)"
+        descriptionAnimalLabel.text = animal.definition
     }
     
     @IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
