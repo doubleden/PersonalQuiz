@@ -8,7 +8,12 @@
 import UIKit
 
 final class ResultViewController: UIViewController {
-
+    
+    @IBOutlet var animalLabel: UILabel!
+    @IBOutlet var descriptionAnimalLabel: UILabel!
+    
+    var answersChosen: [Answer]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
