@@ -32,14 +32,8 @@ final class ResultViewController: UIViewController {
             $0[$1, default: 0] += 1
         }
         
-        var mostChosenAnimal = animals.keys.first ?? .dog
-        for (animal, quantity) in animals {
-            if quantity >= (answers.count) / 2 {
-                mostChosenAnimal = animal
-                break
-            }
-        }
+        let sortedAnimals = animals.sorted { $0.value > $1.value }
         
-        return mostChosenAnimal
+        return sortedAnimals.first?.key ?? .dog
     }
 }
